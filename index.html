@@ -3,12 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Französisch Vokabeltrainer
-  unite 6
-</title>
+<title>Französisch Vokabeltrainer - Unite 6</title>
 
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+@import url('fonts.googleapis.com');
 
 * { box-sizing: border-box; }
 
@@ -30,7 +28,6 @@ body {
   100% { background-position: 0% 50%; }
 }
 
-/* Card */
 .container {
   background: rgba(255,255,255,0.1);
   backdrop-filter: blur(35px);
@@ -50,161 +47,80 @@ body {
   to   { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-h1 {
-  font-size: 38px;
-  color: #f8fafc;
-  margin-bottom: 26px;
-}
+h1 { font-size: 38px; color: #f8fafc; margin-bottom: 26px; }
 
-/* Settings Button */
 .settings-btn {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  background: rgba(255,255,255,0.15);
-  border: none;
-  border-radius: 14px;
-  padding: 10px 14px;
-  cursor: pointer;
-  font-size: 18px;
-  color: white;
+  position: absolute; top: 22px; right: 22px;
+  background: rgba(255,255,255,0.15); border: none; border-radius: 14px;
+  padding: 10px 14px; cursor: pointer; font-size: 18px; color: white;
   transition: transform .3s ease, background .3s ease;
 }
+.settings-btn:hover { transform: rotate(20deg) scale(1.1); background: rgba(255,255,255,0.25); }
 
-.settings-btn:hover {
-  transform: rotate(20deg) scale(1.1);
-  background: rgba(255,255,255,0.25);
+.vocab { font-size: 34px; font-weight: 600; color: #e5e7eb; margin: 32px 0 8px; transition: opacity .3s ease, transform .3s ease; }
+.vocab.fade { opacity: 0; transform: translateY(10px); }
+
+.star-btn { background: none; border: none; font-size: 34px; cursor: pointer; color: #facc15; margin-bottom: 18px; transition: transform .2s ease; }
+.star-btn.pop { animation: starPop .3s ease; }
+
+@keyframes starPop {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.4); }
+    100% { transform: scale(1); }
 }
 
-/* Vocab */
-.vocab {
-  font-size: 34px;
-  font-weight: 600;
-  color: #e5e7eb;
-  margin: 32px 0 8px;
-  transition: opacity .3s ease, transform .3s ease;
+input { width: 100%; padding: 20px; font-size: 22px; border-radius: 16px; border: none; outline: none; }
+
+.buttons { margin-top: 30px; }
+button.action { padding: 18px 40px; font-size: 18px; border-radius: 20px; border: none; font-weight: 600; cursor: pointer; margin: 8px; color: white; transition: transform .25s ease; }
+button.action:hover { transform: translateY(-2px); }
+button.action.animate { animation: btnPress .3s ease; }
+
+@keyframes btnPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95) translateY(2px); }
+    100% { transform: scale(1) translateY(0); }
 }
 
-.vocab.fade {
-  opacity: 0;
-  transform: translateY(10px);
-}
+#checkBtn { background: linear-gradient(135deg, #22c55e, #16a34a); }
+#nextBtn { background: linear-gradient(135deg, #6366f1, #4f46e5); }
 
-/* Star */
-.star-btn {
-  background: none;
-  border: none;
-  font-size: 34px;
-  cursor: pointer;
-  color: #facc15;
-  margin-bottom: 18px;
-  transition: transform .2s ease;
-}
-
-.star-btn:hover {
-  transform: scale(1.2);
-}
-
-/* Input */
-input {
-  width: 100%;
-  padding: 20px;
-  font-size: 22px;
-  border-radius: 16px;
-  border: none;
-  outline: none;
-}
-
-/* Buttons */
-.buttons {
-  margin-top: 30px;
-}
-
-button.action {
-  padding: 18px 40px;
-  font-size: 18px;
-  border-radius: 20px;
-  border: none;
-  font-weight: 600;
-  cursor: pointer;
-  margin: 8px;
-  color: white;
-  transition: transform .25s ease, box-shadow .25s ease;
-}
-
-button.action:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.45);
-}
-
-#checkBtn {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-}
-
-#nextBtn {
-  background: linear-gradient(135deg, #6366f1, #4f46e5);
-}
-
-/* Feedback */
-.feedback {
-  font-size: 22px;
-  margin-top: 22px;
-  min-height: 30px;
-  font-weight: 600;
-}
-
-.correct {
-  color: #22c55e;
-  animation: pulse .5s ease;
-}
-
-.wrong {
-  color: #fb7185;
-  animation: pulse .5s ease;
-}
-
-@keyframes pulse {
-  from { transform: scale(.95); opacity: .5; }
-  to   { transform: scale(1); opacity: 1; }
-}
+.feedback { font-size: 22px; margin-top: 22px; min-height: 30px; font-weight: 600; }
+.correct { color: #22c55e; }
+.wrong { color: #fb7185; }
 
 /* Settings Modal */
-.settings {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-
-.settings.active {
-  display: flex;
-  animation: fadeIn .3s ease;
-}
+.settings { position: fixed; inset: 0; background: rgba(0,0,0,0.7); display: none; align-items: center; justify-content: center; z-index: 100; }
+.settings.active { display: flex; animation: fadeIn .3s ease; }
 
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
+@keyframes settingsIn {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+.settings.active .settings-box { animation: settingsIn .3s ease forwards; }
+
 .settings-box {
-  background: rgba(30,41,59,0.95);
-  padding: 30px;
-  border-radius: 20px;
-  width: 320px;
-  text-align: center;
-  color: white;
+  background: #1e293b; padding: 30px; border-radius: 20px;
+  width: 90%; max-width: 600px; max-height: 80vh; overflow-y: auto;
+  text-align: center; color: white; border: 1px solid rgba(255,255,255,0.1);
 }
 
-.toggle {
-  margin-top: 20px;
-}
+.toggle-group { display: flex; justify-content: space-around; margin-top: 20px; padding-bottom: 20px; border-bottom: 1px solid rgba(255,255,255,0.1); }
+label { display: flex; align-items: center; cursor: pointer; }
+.toggle-group input { transform: scale(1.4); margin-right: 10px; }
 
-.toggle input {
-  transform: scale(1.4);
-  margin-right: 10px;
-}
+/* Statistik Style */
+.stats-container { margin-top: 25px; text-align: left; max-height: 300px; overflow-y: auto; }
+.stat-row { display: flex; justify-content: space-between; font-size: 14px; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,0.1); }
+.stat-name { flex: 1; }
+.stat-vals { color: #cbd5e1; }
+.val-c { color: #22c55e; margin-right: 15px; font-weight: bold; }
+.val-w { color: #fb7185; font-weight: bold; }
 </style>
 </head>
 
@@ -212,97 +128,118 @@ button.action:hover {
 
 <div class="container">
   <button class="settings-btn" onclick="toggleSettings()">⚙️</button>
-
   <h1>🇫🇷 Französisch Vokabeltrainer</h1>
-
   <div class="vocab" id="vocab">Klicke auf „Nächstes Wort“</div>
   <button id="starBtn" class="star-btn">☆</button>
-
   <input id="answerInput" type="text" placeholder="Französische Übersetzung eingeben">
-
   <div class="feedback" id="feedback"></div>
-
   <div class="buttons">
     <button class="action" id="checkBtn">Überprüfen</button>
     <button class="action" id="nextBtn">Nächstes Wort</button>
   </div>
 </div>
 
-<!-- SETTINGS -->
 <div class="settings" id="settings">
   <div class="settings-box">
-    <h2>⚙️ Einstellungen</h2>
+    <h2>⚙️ Einstellungen & Statistik</h2>
 
-    <div class="toggle">
-      <label>
-        <input type="checkbox" id="strictToggle">
-        Strenge Überprüfung
-      </label>
+    <div class="toggle-group">
+        <label><input type="checkbox" id="strictToggle"> Strenge Überprüfung</label>
+        <label><input type="checkbox" id="starOnlyToggle"> ⭐ Nur Stern-Wörter</label>
+    </div>
+    
+    <h3 style="text-align: left;">Deine Statistik:</h3>
+    <div class="stats-container" id="statsList">
+        <!-- Stats here -->
     </div>
 
-    <div class="toggle">
-      <label>
-        <input type="checkbox" id="starOnlyToggle">
-        ⭐ Nur Stern-Wörter üben
-      </label>
+    <div style="margin-top: 30px;">
+        <button class="action" style="background: linear-gradient(135deg, #475569, #334155);" onclick="toggleSettings()">Schließen</button>
+        <button class="action" style="background: linear-gradient(135deg, #ef4444, #b91c1c); font-size: 14px; padding: 14px 24px;" onclick="clearAllData()">Alle Daten löschen</button>
     </div>
-
-    <br>
-    <button class="action" onclick="toggleSettings()">Schließen</button>
   </div>
 </div>
 
 <script>
-let strictMode = false;
-let starOnlyMode = false;
-
+// --- DATEN & SPEICHERUNG ---
 const vocabList = [
   { de: "der Beste / die Beste", fr: ["le meilleur", "la meilleure"] },
   { de: "der Roboter", fr: ["le robot"] },
   { de: "nur", fr: ["seulement"] },
-
   { de: "können / dürfen", fr: ["pouvoir"] },
   { de: "müssen", fr: ["devoir"] },
   { de: "wollen", fr: ["vouloir"] },
-
   { de: "eine gute / schlechte Note", fr: ["une bonne note", "une mauvaise note"] },
   { de: "das Taschengeld", fr: ["l'argent de poche"] },
   { de: "die Nachricht", fr: ["le message"] },
-
   { de: "entscheiden", fr: ["decider"] },
   { de: "sich konzentrieren", fr: ["se concentrer"] },
   { de: "auswendig lernen / sich einprägen", fr: ["memoriser"] },
-
   { de: "aufräumen / ordnen", fr: ["ranger"] },
   { de: "die Sachen", fr: ["les affaires"] },
   { de: "ohne", fr: ["sans"] },
-
   { de: "das Problem", fr: ["le probleme"] },
   { de: "die Lösung", fr: ["la solution"] },
   { de: "erfinden", fr: ["inventer"] },
-
   { de: "schwimmen", fr: ["nager"] },
   { de: "jdm helfen", fr: ["aider qn"] }
 ];
 
+// Lade gespeicherte Daten
+let stats = JSON.parse(localStorage.getItem('vocaStats_u6')) || {};
+let stars = JSON.parse(localStorage.getItem('vocaStars_u6')) || [];
+let settings = JSON.parse(localStorage.getItem('vocaSettings_u6')) || { strict: false, starOnly: false };
+
+// Initialisiere Sterne in der Liste
+vocabList.forEach(v => v.star = stars.includes(v.de));
 
 let currentIndex = -1;
+let strictMode = settings.strict;
+let starOnlyMode = settings.starOnly;
 
+// DOM Elemente
 const vocabEl = document.getElementById("vocab");
 const inputEl = document.getElementById("answerInput");
 const feedbackEl = document.getElementById("feedback");
 const starBtn = document.getElementById("starBtn");
+const statsListEl = document.getElementById("statsList");
+const checkBtn = document.getElementById("checkBtn");
+const nextBtn = document.getElementById("nextBtn");
 
+
+// --- LOGIK ---
+
+function saveData() {
+    localStorage.setItem('vocaStars_u6', JSON.stringify(vocabList.filter(v => v.star).map(v => v.de)));
+    localStorage.setItem('vocaStats_u6', JSON.stringify(stats));
+    localStorage.setItem('vocaSettings_u6', JSON.stringify({ strict: strictMode, starOnly: starOnlyMode }));
+}
+
+// Normalisiert Text (entfernt Umlaute, Leerzeichen, Kleinbuchstaben)
 function normalize(text) {
-  return text.toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/\s+/g, " ")
-    .trim();
+  return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/\s+/g, " ").trim();
+}
+
+function updateStatsUI() {
+    statsListEl.innerHTML = "";
+    // Sortiere Statistiken alphabetisch nach deutschem Wort
+    const sortedVocab = [...vocabList].sort((a, b) => a.de.localeCompare(b.de));
+
+    sortedVocab.forEach(v => {
+        const s = stats[v.de] || { c: 0, w: 0 };
+        if(s.c > 0 || s.w > 0) {
+            const row = document.createElement("div");
+            row.className = "stat-row";
+            row.innerHTML = `<span class="stat-name">${v.de}</span>
+                             <span class="stat-vals"><span class="val-c">✓ ${s.c}</span><span class="val-w">✗ ${s.w}</span></span>`;
+            statsListEl.appendChild(row);
+        }
+    });
+    if(statsListEl.innerHTML === "") statsListEl.innerHTML = "<p style='text-align: center; color: #94a3b8;'>Noch keine Übungen gemacht.</p>";
 }
 
 function nextWord() {
   const list = starOnlyMode ? vocabList.filter(v => v.star) : vocabList;
-
   if (list.length === 0) {
     vocabEl.textContent = "⭐ Keine markierten Wörter";
     return;
@@ -310,67 +247,106 @@ function nextWord() {
 
   let i;
   do { i = Math.floor(Math.random() * list.length); }
-  while (vocabList.indexOf(list[i]) === currentIndex);
+  while (list.length > 1 && vocabList.indexOf(list[i]) === currentIndex);
 
   currentIndex = vocabList.indexOf(list[i]);
-
   vocabEl.classList.add("fade");
   setTimeout(() => {
     vocabEl.textContent = vocabList[currentIndex].de;
     vocabEl.classList.remove("fade");
-  }, 250);
+  }, 200);
 
   starBtn.textContent = vocabList[currentIndex].star ? "★" : "☆";
   inputEl.value = "";
   feedbackEl.textContent = "";
   feedbackEl.className = "feedback";
+  nextBtn.classList.remove("animate"); // Animation zurücksetzen
 }
 
 function checkAnswer() {
   if (currentIndex === -1) return;
+  const word = vocabList[currentIndex];
+  if (!stats[word.de]) stats[word.de] = { c: 0, w: 0 };
 
-  const user = normalize(inputEl.value);
-  const solutions = vocabList[currentIndex].fr.map(normalize);
+  const userInput = inputEl.value.trim();
+  const normalizedUserInput = normalize(userInput);
+  const solutionsNormalized = word.fr.map(normalize);
 
-  const ok = strictMode
-    ? solutions.includes(user)
-    : user.split("/").every(p => solutions.includes(p.trim()));
+  let isCorrect = false;
 
-  if (ok) {
+  if (strictMode) {
+    // Strikter Modus: Die Eingabe muss exakt einer der Lösungen entsprechen (nach Normalisierung)
+    isCorrect = solutionsNormalized.includes(normalizedUserInput);
+  } else {
+    // Normaler Modus: Jedes Teilwort der Eingabe muss in den Lösungen enthalten sein
+    const userParts = normalizedUserInput.split("/").map(p => p.trim()).filter(p => p.length > 0);
+    isCorrect = userParts.length > 0 && userParts.every(p => solutionsNormalized.includes(p));
+  }
+
+  if (isCorrect && userInput !== "") {
     feedbackEl.textContent = "✅ Richtig";
     feedbackEl.className = "feedback correct";
+    stats[word.de].c++;
   } else {
-    feedbackEl.textContent =
-      "❌ Richtig wäre: " + vocabList[currentIndex].fr.join(" / ");
+    feedbackEl.textContent = "❌ Richtig wäre: " + word.fr.join(" / ");
     feedbackEl.className = "feedback wrong";
+    stats[word.de].w++;
   }
+  
+  // Animation beim Checken
+  checkBtn.classList.add("animate");
+  setTimeout(() => checkBtn.classList.remove("animate"), 300);
+
+  saveData();
+  updateStatsUI();
 }
+
+function clearAllData() {
+    if(confirm("Möchtest du wirklich alle Statistiken und Sterne löschen?")) {
+        localStorage.clear();
+        location.reload();
+    }
+}
+
+// --- EVENTS ---
 
 starBtn.onclick = () => {
   if (currentIndex === -1) return;
   vocabList[currentIndex].star = !vocabList[currentIndex].star;
   starBtn.textContent = vocabList[currentIndex].star ? "★" : "☆";
+  starBtn.classList.add("pop"); // Animation hinzufügen
+  setTimeout(() => starBtn.classList.remove("pop"), 300);
+  saveData();
 };
 
 function toggleSettings() {
   document.getElementById("settings").classList.toggle("active");
+  updateStatsUI();
 }
 
+document.getElementById("strictToggle").checked = strictMode;
 document.getElementById("strictToggle").onchange = e => {
   strictMode = e.target.checked;
+  saveData();
 };
 
+document.getElementById("starOnlyToggle").checked = starOnlyMode;
 document.getElementById("starOnlyToggle").onchange = e => {
   starOnlyMode = e.target.checked;
+  saveData();
   nextWord();
 };
 
 document.getElementById("checkBtn").onclick = checkAnswer;
-document.getElementById("nextBtn").onclick = nextWord;
+document.getElementById("nextBtn").onclick = () => {
+    nextBtn.classList.add("animate");
+    setTimeout(nextWord, 300); // Verzögere nextWord, damit Animation läuft
+};
+inputEl.addEventListener("keydown", e => { if (e.key === "Enter") checkAnswer(); });
 
-inputEl.addEventListener("keydown", e => {
-  if (e.key === "Enter") checkAnswer();
-});
+// Start
+updateStatsUI();
+nextWord();
 </script>
 
 </body>
